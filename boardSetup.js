@@ -27,7 +27,7 @@ const renderFirstBoard = () => {
         alphaNum++;
       }
 
-      //set the first row to have the numbers from one to 10.
+      //set the first columb to have the numbers from one to 10.
       if (j == 0 && !(i == 0 && j == 0)) {
         square.innerHTML = numbers[num];
         num++;
@@ -71,13 +71,13 @@ const renderSecondBoard = () => {
       //make a new box container to put in all the boxes of the grid
       let box = document.createElement("div");
 
-      //ignore the i =0 ,j = 0 index to not have anything in it cause we dont need it
+      //ignore the 0,0 index to not have anything in it cause we dont need it
       if (i == 0 && !(i == 0 && j == 0)) {
         box.innerHTML = alphabets[secondAlphaNum];
         secondAlphaNum++;
       }
 
-      //set the first row to have the numbers from one to 10.
+      //set the first columb to have the numbers from one to 10.
       if (j == 0 && !(i == 0 && j == 0)) {
         box.innerHTML = numbers[secondNum];
         secondNum++;

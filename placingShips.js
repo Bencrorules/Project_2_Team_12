@@ -42,7 +42,6 @@ const placingShips = (i,j,direction) => {
                 color = "destroyer"
             }
             
-
             //runs a for loop to place the ship in the right index.
             for(let k = 0; k < numOfShips; k++)
             {
@@ -63,10 +62,7 @@ const placingShips = (i,j,direction) => {
             
             //number of ship is decreased after each placement of ship
             numOfShips--;
-            //update the description box accordingly.
-            updateShipText();
-        
-
+            
             console.log(visitedArrayForFirst);
             if(numOfShips == 0)
             {
@@ -77,6 +73,9 @@ const placingShips = (i,j,direction) => {
                     RenderFirstOrSecondBoard();
                 },300)
             }  
+
+            //update the description box accordingly.
+            updateShipText();
         } 	
     }
     else //work on second board if first done = true.
@@ -111,8 +110,7 @@ const placingShips = (i,j,direction) => {
             else
             {
                 color = "destroyer"
-            }
-            
+            }            
 
             //runs a for loop to place the ship in the right index.
             for(let k = 0; k < numOfShips; k++)
@@ -135,9 +133,7 @@ const placingShips = (i,j,direction) => {
             }
             //number of ship is decreased after each placement of ship
             numOfShips--;
-            //update the description box accordingly.
-            updateShipText();
-        
+            if(opponent == 1) updateShipText();
 
             console.log(visitedArrayForSecond);
             if(numOfShips == 0)
@@ -151,8 +147,5 @@ const placingShips = (i,j,direction) => {
                 
             }
         }
-        
     }
-    
 }
-

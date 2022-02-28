@@ -125,16 +125,19 @@ const validIndexForSecond = (i,j,direction,numOfShips) => {
         }
         else
         {
-            //updates the description box.
-            let inner = document.getElementsByClassName('log-wrapper')[0] 
-            inner.innerHTML = "Out of bounds"
+            if(opponent == 1)
+            {
+                //updates the description box.
+                let inner = document.getElementsByClassName('log-wrapper')[0] 
+                inner.innerHTML = "Out of bounds"
+            }
         }
     }
     //if direction is horizontal
     else if(direction == "horizontal")
     {
         console.log(i,j,direction,numOfShips)
-         //check whether the ship will be out of bounds of the board or not.
+        //check whether the ship will be out of bounds of the board or not.
         // i + numShips should be less than or equal than 11
         if(j + parseInt(numOfShips) <=11)
         {

@@ -20,15 +20,22 @@ const RenderFirstOrSecondBoard = () => {
   //this function is called after all the ships in the first board is placed
   if (firstBoardDone == true && secondBoardDone == false) {
     //if ships are placed in first board but not the second board
-    numOfShips = originalNum
-    //Hide First Board
-    gameBoardContainer1.classList.add("invisible");
-    gameBoardContainer2.classList.remove("hidden");
+    numOfShips = originalNum;
     //Render second board
     renderSecondBoard();
     playerNow = 2;
-    updateShipText();
-  } else if (firstBoardDone == true && secondBoardDone == true) {
+
+    //Hide First Board and updates text prompt (not needed for AI game)
+    if (opponent == 1) {
+      gameBoardContainer1.classList.add("invisible");
+      gameBoardContainer2.classList.remove("hidden");
+      updateShipText();
+    }
+    else {
+      placeRandomizedShips();
+    }
+  } 
+  else if (firstBoardDone == true && secondBoardDone == true) {
     //if both boards are done placing ships then render the "Start Game" button by removing the class of hidden
     startGameDiv.classList.remove("hidden");
     let inner = document.getElementsByClassName('log-wrapper')[0] 
@@ -55,6 +62,14 @@ const startGame = () => {
 }
 
 //This is what starts the game by prompting the user.
+let originalOpponent = prompt("Would you like to play with a human or against the machine? (1 = human, 2 = machine) ");
+//unless number 1 or 2 is entered it will keep prompting the user.
+if(isNaN(originalOpponent) || originalOpponent <= 0 || originalOpponent > 2)
+{
+  location.reload();
+}
+let opponent = originalOpponent;
+
 let originalNum = prompt("Enter the number of ships that you want to play with ( 1 to 5) ");
 //unless number between 1 to 5 is entered it will keep prompting the user.
 if(isNaN(originalNum) || originalNum <= 0 || originalNum > 5)
@@ -63,13 +78,17 @@ if(isNaN(originalNum) || originalNum <= 0 || originalNum > 5)
 }
 let numOfShips = originalNum;
 
-//difficulty selector prompt. reloads if bad input
-let originalDifficulty = prompt("Choose your AI difficulty (1 = Easy, 2 = Medium, 3 = Hard) ");
-if(isNaN(originalDifficulty) || originalDifficulty <= 0 || originalDifficulty > 3)
+let difficulty = 0;
+if(opponent == 2)
 {
-  location.reload();
+  //difficulty selector prompt. reloads if bad input
+  let originalDifficulty = prompt("Choose your AI difficulty (1 = Easy, 2 = Medium, 3 = Hard) ");
+  if(isNaN(originalDifficulty) || originalDifficulty <= 0 || originalDifficulty > 3)
+  {
+    location.reload();
+  }
+  difficulty = originalDifficulty;
 }
-let difficulty = originalDifficulty;
 
 //this is what starts the game; it is defined in boardSetup.js
 renderFirstBoard();
