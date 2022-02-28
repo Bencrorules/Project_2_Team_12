@@ -11,7 +11,6 @@ let colors = ["red", "pink", "white", "orange", "yellow"];
 //grabbing the HTML element with id firstGameBoard
 let gameBoardContainer1 = document.getElementById("firstGameBoard");
 
-
 // This function renders the First board 
 const renderFirstBoard = () => {
 
@@ -22,19 +21,19 @@ const renderFirstBoard = () => {
       //make a new box container to put in all the boxes of the grid
       let square = document.createElement("div");
 
-      //set the i =0 ,j = 0 index to not have anything in it cause we dont need it
+      //ignores the i = 0 ,j = 0 index to not have anything in it cause we dont need it
       if (i == 0 && !(i == 0 && j == 0)) {
         square.innerHTML = alphabets[alphaNum];
         alphaNum++;
       }
 
-       //set the first row to have the numbers from one to 10.
+      //set the first row to have the numbers from one to 10.
       if (j == 0 && !(i == 0 && j == 0)) {
         square.innerHTML = numbers[num];
         num++;
       }
 
-       //append all the boxes into the main container.
+      //append all the boxes into the main container.
       gameBoardContainer1.appendChild(square).className = `${i},${j}`;
 
       //if set box.i and box.j properties to i-1, j-1 cause we dont need first and last 
@@ -72,8 +71,7 @@ const renderSecondBoard = () => {
       //make a new box container to put in all the boxes of the grid
       let box = document.createElement("div");
 
-      //set the i =0 ,j = 0 index to not have anything in it cause we dont need it
-
+      //ignore the i =0 ,j = 0 index to not have anything in it cause we dont need it
       if (i == 0 && !(i == 0 && j == 0)) {
         box.innerHTML = alphabets[secondAlphaNum];
         secondAlphaNum++;

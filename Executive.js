@@ -1,38 +1,17 @@
-//This is what starts the game by prompting the user.
-
-
-let originalNum = prompt("Enter the number of ships that you want to play with ( 1 to 5) ");
-//unless number between 1 to 5 is entered it will keep prompting the user.
-if(isNaN(originalNum) || originalNum <= 0 || originalNum > 5)
-{
-  location.reload();
-}
-
-let numOfShips = originalNum;
-
-
-//this is what starts the game; it is defined in boardSetup.js
-renderFirstBoard();
-
-let playerNow = 1;
-
 //gets the orientation that the user wants. Listens to the radio buttons on homepage
 const getOrientation = (orientation) => {
     let radios = document.getElementsByName('orientation').value = orientation
     direction = radios;
 }
 
-//updates the text of which ship to place for the user needs to place
+//updates the text of which ship the user needs to place next
 const updateShipText = () => {
   let inner = document.getElementsByClassName('log-wrapper')[0] 
   if(numOfShips>0)
   {
     inner.innerHTML = `Player ${playerNow}, Please place your 1x${numOfShips} ship`
-  }      
-  
+  }     
 }
-
-updateShipText();
 
 //The calls to this function are made from placingShips.js.
 //It is used for rendering the second board after the first board is done placing ships.
@@ -55,21 +34,7 @@ const RenderFirstOrSecondBoard = () => {
     let inner = document.getElementsByClassName('log-wrapper')[0] 
     inner.innerHTML = "Press 'Start Game' Below to start the game !!!";
   }
-};
-
-/* The lines below aren't to be mistaken with Starting the Game, 
-they come into play after both players have placed ships 
-and they click on "Start game" */
-
-// Grabbing The Start Game Box That pops up after both players place ships
-let startGameDiv = document.querySelector("#prompter");
-// Grabbing the button inside that box
-let startGameButton = document.getElementById("clicker");
-
-//After the user clicks on the "Start Game" button it fires a function called startGame();
-startGameButton.addEventListener("click", () => {
-  startGame();
-});
+}
 
 //Before start game is clicked, the first board is hidden cause second player place ships at last
 const startGame = () => {
@@ -87,4 +52,41 @@ const startGame = () => {
   inner.innerHTML = "Player 1's turn, FIRE !!!"
 
   //now we should instead make the "Switch Team" visible by removing the "hidden class from it"
-};
+}
+
+//This is what starts the game by prompting the user.
+let originalNum = prompt("Enter the number of ships that you want to play with ( 1 to 5) ");
+//unless number between 1 to 5 is entered it will keep prompting the user.
+if(isNaN(originalNum) || originalNum <= 0 || originalNum > 5)
+{
+  location.reload();
+}
+let numOfShips = originalNum;
+
+//difficulty selector prompt. reloads if bad input
+let originalDifficulty = prompt("Choose your AI difficulty (1 = Easy, 2 = Medium, 3 = Hard) ");
+if(isNaN(originalDifficulty) || originalDifficulty <= 0 || originalDifficulty > 3)
+{
+  location.reload();
+}
+let difficulty = originalDifficulty;
+
+//this is what starts the game; it is defined in boardSetup.js
+renderFirstBoard();
+let playerNow = 1;
+updateShipText();
+
+/* The lines below aren't to be mistaken with Starting the Game, 
+they come into play after both players have placed ships 
+and they click on "Start game" */
+
+// Grabbing The Start Game Box That pops up after both players place ships
+let startGameDiv = document.querySelector("#prompter");
+// Grabbing the button inside that box
+let startGameButton = document.getElementById("clicker");
+
+//After the user clicks on the "Start Game" button it fires a function called startGame();
+startGameButton.addEventListener("click", () => {
+  startGame();
+});
+
