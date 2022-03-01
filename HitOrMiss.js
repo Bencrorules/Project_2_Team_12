@@ -54,6 +54,12 @@ const checkIfHitInFirst = (fakebox) => {
         
         aiSearching = false;
         hits++;
+        //the hit array needs to be updated.
+        HitArrayForFirst[i][j] = true;
+        hitSound();
+        //the class of hit-box will be added to the box which was hit.
+        fakebox.classList.add(".hit-box");
+        fakebox.innerHTML = "✅";
 
         //the description box will be changed accordingly
         let inner = document.getElementsByClassName('log-wrapper')[0]
@@ -163,6 +169,7 @@ const checkIfHitInSecond = (fakebox) => {
       //if the visited array has a true index on it.
       if (visitedArrayForSecond[i][j]) {
         HitArrayForSecond[i][j] = true;
+        hitSound();
         //then its a hit.
         //the hit array needs to be updated.
         fakebox.classList.add(".hit-box");
