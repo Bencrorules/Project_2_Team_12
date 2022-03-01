@@ -26,6 +26,7 @@ const checkIfHitInFirst = (fakebox) => {
         hits++;
         //the hit array needs to be updated.
         HitArrayForFirst[i][j] = true;
+        hitSound();
         //the class of hit-box will be added to the box which was hit.
         fakebox.classList.add(".hit-box");
         fakebox.innerHTML = "✅";
@@ -92,6 +93,7 @@ const checkIfHitInSecond = (fakebox) => {
       //if the visited array has a true index on it.
       if (visitedArrayForSecond[i][j]) {
         HitArrayForSecond[i][j] = true;
+        hitSound();
         //then its a hit.
         //the hit array needs to be updated.
         fakebox.classList.add(".hit-box");
