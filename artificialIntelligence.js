@@ -43,21 +43,46 @@ const artificialTurnMedium = () => {
         artificialTurnEasy();
     }
     else if (hits > 0) {
-        if(hits == 1) randomDirection = 1 //Math.floor(Math.random() * 4);
-        else if(aiSearching == true) hits = 1;
-        if((randomDirection == 0 && aiSearching == false) || (randomDirection == 1 && aiSearching == true)) {
-            checkIfHitInFirst(document.getElementsByClassName(`${randomI + hits},${randomJ}e`)[0])
+        if(hits == 1) {
+            randomDirection = Math.floor(Math.random() * 4);
+            aiSearching = false;
         }
-        else if((randomDirection == 1 && aiSearching == false) || (randomDirection == 0 && aiSearching == true)) {
-            checkIfHitInFirst(document.getElementsByClassName(`${randomI - hits},${randomJ}e`)[0])
+        else if(aiSearching == true) {
+            hits = 1;
+            aiSearching = false;
+            if(randomDirection == 0) randomDirection = 1
+            else if(randomDirection == 1) randomDirection = 0
+            else if(randomDirection == 2) randomDirection = 3
+            else if(randomDirection == 3) randomDirection = 2
         }
-        else if((randomDirection == 2 && aiSearching == false) || (randomDirection == 3 && aiSearching == true)) {
-            checkIfHitInFirst(document.getElementsByClassName(`${randomI},${randomJ + hits}e`)[0])
+        if(randomDirection == 0 && aiSearching == false) {
+            if((randomI + hits) <= 10 && (randomI + hits) >= 1) checkIfHitInFirst(document.getElementsByClassName(`${randomI + hits},${randomJ}e`)[0])
+            else {
+                aiSearching = true
+                artificialTurnMedium();
+            }
         }
-        else if((randomDirection == 3 && aiSearching == false) || (randomDirection == 2 && aiSearching == true)) {
-            checkIfHitInFirst(document.getElementsByClassName(`${randomI},${randomJ - hits}e`)[0])
+        else if(randomDirection == 1 && aiSearching == false) {
+            if((randomI - hits) <= 10 && (randomI - hits) >= 1) checkIfHitInFirst(document.getElementsByClassName(`${randomI - hits},${randomJ}e`)[0])
+            else {
+                aiSearching = true
+                artificialTurnMedium();
+            } 
         }
-        //checkIfHitInFirst(chosenSquare);    
+        else if(randomDirection == 2 && aiSearching == false) {
+            if((randomJ + hits) <= 10 && (randomJ + hits) >= 1) checkIfHitInFirst(document.getElementsByClassName(`${randomI},${randomJ + hits}e`)[0])
+            else {
+                aiSearching = true
+                artificialTurnMedium();
+            } 
+        }
+        else if(randomDirection == 3 && aiSearching == false) {
+            if((randomJ - hits) <= 10 && (randomJ - hits) >= 1) checkIfHitInFirst(document.getElementsByClassName(`${randomI},${randomJ - hits}e`)[0])
+            else {
+                aiSearching = true
+                artificialTurnMedium();
+            } 
+        }
     }
 }
 

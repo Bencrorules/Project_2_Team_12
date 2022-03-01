@@ -1,4 +1,10 @@
 let turnSwitch = 0;
+let carrierPips = 5;
+let battleshipPips = 4;
+let cruiserPips = 3;
+let submarinePips = 2;
+let destroyerPips = 1;
+
 const checkIfHitInFirst = (fakebox) => {
   let i = fakebox.i;
   let j = fakebox.j;
@@ -15,20 +21,39 @@ const checkIfHitInFirst = (fakebox) => {
       //also update the description box with that message.
       let inner = document.getElementsByClassName('log-wrapper')[0]
       if(opponent == 1) inner.innerHTML = "Already clicked that space. Try again !"
-      else artificialTurn();
+      else if(HitArrayForFirst[i][j] == true) {
+        var elementRepeat = document.getElementsByClassName(`${i+1},${j+1}`)[0]
+        let elementNameRepeat = elementRepeat.className;
+        elementNameRepeat = elementNameRepeat.toString().replace(/0|1|2|3|4|5|6|7|9| |,/g, '');
+        console.log(elementNameRepeat)
+
+        var elementHome = document.getElementsByClassName(`${randomI},${randomJ}`)[0]
+        let elementNameHome = elementHome.className;
+        elementNameHome = elementNameHome.toString().replace(/0|1|2|3|4|5|6|7|9| |,/g, '');
+
+        if((elementNameHome == elementNameRepeat) && (window[(elementNameHome + "Pips")] > 0)) {
+          hits++
+          aiSearching = false;
+          artificialTurn();
+        }
+        else {
+          aiSearching = true;
+          artificialTurn();
+        }
+      }
+      else if(HitArrayForFirst[i][j] == false) {
+        aiSearching = true;
+        artificialTurn();
+      }
     }
     else
     {
       //if the visited array has a true index on it.
       if (visitedArrayForFirst[i][j]) {
         //then its a hit.
+        
         aiSearching = false;
         hits++;
-        //the hit array needs to be updated.
-        HitArrayForFirst[i][j] = true;
-        //the class of hit-box will be added to the box which was hit.
-        fakebox.classList.add(".hit-box");
-        fakebox.innerHTML = "✅";
 
         //the description box will be changed accordingly
         let inner = document.getElementsByClassName('log-wrapper')[0]
@@ -36,6 +61,52 @@ const checkIfHitInFirst = (fakebox) => {
         else inner.innerHTML += "\nThe AI hit its mark! Your turn!"
         var toHit = document.getElementsByClassName(`${i+1},${j+1}`)[0]
         toHit.innerHTML = "✅";
+
+        let elementName = toHit.className;
+        if(elementName.includes("carrier")) {
+          carrierPips--
+          if (carrierPips == 0 && opponent == 2) {
+            inner.innerHTML += "\nThe AI sunk your carrier!"
+            aiSearching = true;
+            hits = 0;
+          }
+        } else if(elementName.includes("battleship")) {
+          battleshipPips--
+          if (battleshipPips == 0 && opponent == 2) {
+            inner.innerHTML += "\nThe AI sunk your battleship!"
+            aiSearching = true;
+            hits = 0;
+          }
+        } else if(elementName.includes("cruiser")) {
+          cruiserPips--
+          if (cruiserPips == 0 && opponent == 2) {
+            inner.innerHTML += "\nThe AI sunk your cruiser!"
+            aiSearching = true;
+            hits = 0;
+          }
+        } else if(elementName.includes("submarine")) {
+          submarinePips--
+          if (submarinePips == 0 && opponent == 2) {
+            inner.innerHTML += "\nThe AI sunk your submarine!"
+            aiSearching = true;
+            hits = 0;
+          }
+        } else if(elementName.includes("destroyer")) {
+          destroyerPips--
+          if (destroyerPips == 0 && opponent == 2) {
+            inner.innerHTML += "\nThe AI sunk your destroyer!"
+            aiSearching = true;
+            hits = 0;
+          }
+        } 
+
+        //the hit array needs to be updated.
+        HitArrayForFirst[i][j] = true;
+        //the class of hit-box will be added to the box which was hit.
+        fakebox.classList.add(".hit-box");
+        fakebox.innerHTML = "✅";
+
+
       } else {
         //else its a miss.
         aiSearching = true;
