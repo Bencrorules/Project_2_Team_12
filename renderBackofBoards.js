@@ -1,4 +1,4 @@
-let backOfFirst = document.getElementById("backOfFirst");
+let backOfFirst = document.getElementById("backOfFirst"); 
 
 //Renders the back of first board on top of it. built similarly like the initial board.
 const renderBackOfFirstBoard = () => {
@@ -6,9 +6,12 @@ const renderBackOfFirstBoard = () => {
   backOfFirst.innerHTML = "";
   let secondAlphaNum = 0;
   let secondNum = 0;
+  let idIndex = 1;
   for (let i = 0; i < 11; i++) {
     for (let j = 0; j < 11; j++) {
       let square = document.createElement("div");
+      square.setAttribute('id',idIndex.toString());
+      idIndex++;
 
       if (i == 0 && !(i == 0 && j == 0)) {
         square.innerHTML = alphabets[secondAlphaNum];

@@ -83,7 +83,7 @@ const checkIfHitInSecond = (fakebox) => {
     }
     else
     {
-        //if the visited array has a true index on it.
+      //if the visited array has a true index on it.
       if (visitedArrayForSecond[i][j]) {
         HitArrayForSecond[i][j] = true;
         //then its a hit.
@@ -92,7 +92,8 @@ const checkIfHitInSecond = (fakebox) => {
         fakebox.innerHTML = "✅";
         //the description box will be changed accordingly
         let inner = document.getElementsByClassName('log-wrapper')[0]
-        inner.innerHTML = "HIT !!! Switch Team now."
+        if(opponent == 1) inner.innerHTML = "HIT!!! Switch Team now.";
+        else inner.innerHTML = "HIT!!! The AI will take its turn now.";
         //the description box will be changed accordingly
         var toHit = document.getElementsByClassName(`${i+1},${j+1}e`)[0]
         toHit.innerHTML = "HIT";
@@ -104,7 +105,8 @@ const checkIfHitInSecond = (fakebox) => {
         fakebox.innerHTML = "❌";
         //the description box will be changed accordingly
         let inner = document.getElementsByClassName('log-wrapper')[0]
-        inner.innerHTML = "MISS !!! Switch Team now."
+        if(opponent == 1) inner.innerHTML = "MISS!!! Switch Team now.";
+        else inner.innerHTML = "MISS!!! The AI will take its turn now.";
       }
 
       if (checkIfWinInSecond() == true) {
@@ -116,8 +118,13 @@ const checkIfHitInSecond = (fakebox) => {
           location.reload();
         }, 200);
       }
+
       turnSwitch++;
-      switchTeam.classList.remove("hidden");
+      if(opponent == 1) {
+        switchTeam.classList.remove("hidden");
+      } else {
+        artificialTurn();
+      }
     }
   }
 };

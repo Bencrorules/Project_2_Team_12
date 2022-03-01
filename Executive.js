@@ -32,6 +32,8 @@ const RenderFirstOrSecondBoard = () => {
       updateShipText();
     }
     else {
+      gameBoardContainer2.classList.add("hidden");
+      renderBackOfSecondBoard();
       placeRandomizedShips();
     }
   } 

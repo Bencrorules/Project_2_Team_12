@@ -20,3 +20,23 @@ const placeRandomizedShips = () => {
         placingShips(randomI, randomJ, randomDirection);
     }
 }
+
+const artificialTurn = () => {
+    if(difficulty == 1) artificialTurnEasy();
+    else if(Difficulty == 2) artificialTurnMedium();
+    else if(Difficulty == 3) artificialTurnHard();
+}
+
+const artificialTurnEasy = () => {
+    let IDIndex = 1;
+    let chosenSquare = document.getElementById(IDIndex.toString());
+    checkIfHitInFirst(chosenSquare);
+}
+
+const artificialTurnMedium = () => {
+
+}
+
+const artificialTurnHard = () => {
+
+}

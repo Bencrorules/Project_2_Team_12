@@ -125,12 +125,9 @@ const validIndexForSecond = (i,j,direction,numOfShips) => {
         }
         else
         {
-            if(opponent == 1)
-            {
-                //updates the description box.
-                let inner = document.getElementsByClassName('log-wrapper')[0] 
-                inner.innerHTML = "Out of bounds"
-            }
+            //updates the description box.
+            let inner = document.getElementsByClassName('log-wrapper')[0] 
+            if(opponent == 1) inner.innerHTML = "Out of bounds"
         }
     }
     //if direction is horizontal
@@ -169,7 +166,7 @@ const validIndexForSecond = (i,j,direction,numOfShips) => {
         {
             //updates the description box.
             let inner = document.getElementsByClassName('log-wrapper')[0] 
-            inner.innerHTML = "Out of bounds"
+            if(opponent == 1) inner.innerHTML = "Out of bounds"
         }
     }
 }
