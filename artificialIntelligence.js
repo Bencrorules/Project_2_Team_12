@@ -1,8 +1,12 @@
+let aiSearching = true;
+let hits = 0;
+let randomDirection = 0;
+let randomI = 0;
+let randomJ = 0;
+
 const placeRandomizedShips = () => {
     //initializes randomized variables
-    let randomI = 0;
-    let randomJ = 0;
-    let randomDirection = "horizontal";
+    let randomDirectionString = "horizontal";
 
     while (secondBoardDone == false) {
         //generates random numbers from 0 and 9
@@ -11,13 +15,13 @@ const placeRandomizedShips = () => {
         //generates random number from 0 to 1
         let x = Math.floor(Math.random() * 2);
         if (x == 0) {
-            randomDirection = "horizontal";
+            randomDirectionString = "horizontal";
         }
         else {
-            randomDirection = "vertical";
+            randomDirectionString = "vertical";
         }
 
-        placingShips(randomI, randomJ, randomDirection);
+        placingShips(randomI, randomJ, randomDirectionString);
     }
 }
 
@@ -35,7 +39,26 @@ const artificialTurnEasy = () => {
 }
 
 const artificialTurnMedium = () => {
-
+    if (hits == 0) {
+        artificialTurnEasy();
+    }
+    else if (hits > 0) {
+        if(hits == 1) randomDirection = 1 //Math.floor(Math.random() * 4);
+        else if(aiSearching == true) hits = 1;
+        if((randomDirection == 0 && aiSearching == false) || (randomDirection == 1 && aiSearching == true)) {
+            checkIfHitInFirst(document.getElementsByClassName(`${randomI + hits},${randomJ}e`)[0])
+        }
+        else if((randomDirection == 1 && aiSearching == false) || (randomDirection == 0 && aiSearching == true)) {
+            checkIfHitInFirst(document.getElementsByClassName(`${randomI - hits},${randomJ}e`)[0])
+        }
+        else if((randomDirection == 2 && aiSearching == false) || (randomDirection == 3 && aiSearching == true)) {
+            checkIfHitInFirst(document.getElementsByClassName(`${randomI},${randomJ + hits}e`)[0])
+        }
+        else if((randomDirection == 3 && aiSearching == false) || (randomDirection == 2 && aiSearching == true)) {
+            checkIfHitInFirst(document.getElementsByClassName(`${randomI},${randomJ - hits}e`)[0])
+        }
+        //checkIfHitInFirst(chosenSquare);    
+    }
 }
 
 const artificialTurnHard = () => {

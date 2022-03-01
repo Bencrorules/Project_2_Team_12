@@ -22,6 +22,8 @@ const checkIfHitInFirst = (fakebox) => {
       //if the visited array has a true index on it.
       if (visitedArrayForFirst[i][j]) {
         //then its a hit.
+        aiSearching = false;
+        hits++;
         //the hit array needs to be updated.
         HitArrayForFirst[i][j] = true;
         //the class of hit-box will be added to the box which was hit.
@@ -30,11 +32,13 @@ const checkIfHitInFirst = (fakebox) => {
 
         //the description box will be changed accordingly
         let inner = document.getElementsByClassName('log-wrapper')[0]
-        inner.innerHTML = "HIT!!! Switch Team now."
+        if(opponent == 1) inner.innerHTML = "HIT!!! Switch Team now."
+        else inner.innerHTML += "\nThe AI hit its mark! Your turn!"
         var toHit = document.getElementsByClassName(`${i+1},${j+1}`)[0]
-        toHit.innerHTML = "❌";
+        toHit.innerHTML = "✅";
       } else {
         //else its a miss.
+        aiSearching = true;
         HitArrayForFirst[i][j] = false;
         //add the class of miss to the box.
         fakebox.classList.add(".miss-box");
@@ -42,7 +46,8 @@ const checkIfHitInFirst = (fakebox) => {
 
         //update the description accordingly.
         let inner = document.getElementsByClassName('log-wrapper')[0]
-        inner.innerHTML = "MISS!!! Switch Team now.";
+        if(opponent == 1) inner.innerHTML = "MISS!!! Switch Team now.";
+        else inner.innerHTML += "\nThe AI missed! Your turn!"
       }
 
       //check if the win is in first board
@@ -97,7 +102,7 @@ const checkIfHitInSecond = (fakebox) => {
         else inner.innerHTML = "HIT!!! The AI will take its turn now.";
         //the description box will be changed accordingly
         var toHit = document.getElementsByClassName(`${i+1},${j+1}e`)[0]
-        toHit.innerHTML = "❌";
+        toHit.innerHTML = "✅";
 
       } else {
         HitArrayForSecond[i][j] = false;
