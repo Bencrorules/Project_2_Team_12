@@ -66,17 +66,17 @@ const startGame = () => {
 //This is what starts the game by prompting the user.
 let originalOpponent = prompt("Would you like to play with a human or against the machine? (1 = human, 2 = machine) ");
 //unless number 1 or 2 is entered it will keep prompting the user.
-if(isNaN(originalOpponent) || originalOpponent <= 0 || originalOpponent > 2)
+while(isNaN(originalOpponent) || originalOpponent <= 0 || originalOpponent > 2)
 {
-  location.reload();
+  originalOpponent = prompt("Would you like to play with a human or against the machine? (1 = human, 2 = machine) ");
 }
 let opponent = originalOpponent;
 
 let originalNum = prompt("Enter the number of ships that you want to play with ( 1 to 5) ");
 //unless number between 1 to 5 is entered it will keep prompting the user.
-if(isNaN(originalNum) || originalNum <= 0 || originalNum > 5)
+while(isNaN(originalNum) || originalNum <= 0 || originalNum > 5)
 {
-  location.reload();
+  originalNum = prompt("Enter the number of ships that you want to play with ( 1 to 5) ");
 }
 let numOfShips = originalNum;
 
@@ -85,9 +85,9 @@ if(opponent == 2)
 {
   //difficulty selector prompt. reloads if bad input
   let originalDifficulty = prompt("Choose your AI difficulty (1 = Easy, 2 = Medium, 3 = Hard) ");
-  if(isNaN(originalDifficulty) || originalDifficulty <= 0 || originalDifficulty > 3)
+  while(isNaN(originalDifficulty) || originalDifficulty <= 0 || originalDifficulty > 3)
   {
-    location.reload();
+    originalDifficulty = prompt("Choose your AI difficulty (1 = Easy, 2 = Medium, 3 = Hard) ");
   }
   difficulty = originalDifficulty;
 }

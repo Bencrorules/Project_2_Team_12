@@ -23,13 +23,14 @@ const placeRandomizedShips = () => {
 
 const artificialTurn = () => {
     if(difficulty == 1) artificialTurnEasy();
-    else if(Difficulty == 2) artificialTurnMedium();
-    else if(Difficulty == 3) artificialTurnHard();
+    else if(difficulty == 2) artificialTurnMedium();
+    else if(difficulty == 3) artificialTurnHard();
 }
 
 const artificialTurnEasy = () => {
-    let IDIndex = 1;
-    let chosenSquare = document.getElementById(IDIndex.toString());
+    randomI = Math.floor(Math.random() * 10) + 1;
+    randomJ = Math.floor(Math.random() * 10) + 1;
+    let chosenSquare = document.getElementsByClassName(`${randomI},${randomJ}e`)[0]
     checkIfHitInFirst(chosenSquare);
 }
 
@@ -38,5 +39,18 @@ const artificialTurnMedium = () => {
 }
 
 const artificialTurnHard = () => {
-
+    let count = 0;
+    for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
+            if(visitedArrayForFirst[i][j]) count++
+            if(count == Math.floor(turnSwitch/2) + 1) {
+                randomI = i;
+                randomJ = j;
+                i = 10
+                j = 10
+            }
+        }
+    }
+    let chosenSquare = document.getElementsByClassName(`${randomI + 1},${randomJ + 1}e`)[0]
+    checkIfHitInFirst(chosenSquare);
 }

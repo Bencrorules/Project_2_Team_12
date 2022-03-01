@@ -14,7 +14,8 @@ const checkIfHitInFirst = (fakebox) => {
       //so we need to say the user to place in another index.
       //also update the description box with that message.
       let inner = document.getElementsByClassName('log-wrapper')[0]
-      inner.innerHTML = "Already clicked that space. Try again !"
+      if(opponent == 1) inner.innerHTML = "Already clicked that space. Try again !"
+      else artificialTurn();
     }
     else
     {
@@ -29,9 +30,9 @@ const checkIfHitInFirst = (fakebox) => {
 
         //the description box will be changed accordingly
         let inner = document.getElementsByClassName('log-wrapper')[0]
-        inner.innerHTML = "HIT !!! Switch Team now."
+        inner.innerHTML = "HIT!!! Switch Team now."
         var toHit = document.getElementsByClassName(`${i+1},${j+1}`)[0]
-        toHit.innerHTML = "HIT";
+        toHit.innerHTML = "❌";
       } else {
         //else its a miss.
         HitArrayForFirst[i][j] = false;
@@ -41,7 +42,7 @@ const checkIfHitInFirst = (fakebox) => {
 
         //update the description accordingly.
         let inner = document.getElementsByClassName('log-wrapper')[0]
-        inner.innerHTML = "MISS !!! Switch Team now.";
+        inner.innerHTML = "MISS!!! Switch Team now.";
       }
 
       //check if the win is in first board
@@ -59,7 +60,7 @@ const checkIfHitInFirst = (fakebox) => {
 
       //update team switch variable.
       turnSwitch++;
-      switchTeam.classList.remove("hidden");
+      if(opponent == 1) switchTeam.classList.remove("hidden");
     }
   }
 };
@@ -96,7 +97,7 @@ const checkIfHitInSecond = (fakebox) => {
         else inner.innerHTML = "HIT!!! The AI will take its turn now.";
         //the description box will be changed accordingly
         var toHit = document.getElementsByClassName(`${i+1},${j+1}e`)[0]
-        toHit.innerHTML = "HIT";
+        toHit.innerHTML = "❌";
 
       } else {
         HitArrayForSecond[i][j] = false;
@@ -133,6 +134,7 @@ const checkIfHitInSecond = (fakebox) => {
 //this function checks if its a win in the first board.
 const checkIfWinInFirst = () => {
   let hitCountFirst = 0;
+  let pipCount = 0;
   //running double for loop to check HitArray
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
@@ -142,7 +144,8 @@ const checkIfWinInFirst = () => {
       }
     }
   }
-  if (hitCountFirst == findTotalClickCount(parseInt(originalNum))) {
+  for (let i = 1; i <= originalNum; i++) pipCount+=i
+  if (hitCountFirst == pipCount) {
     return true;
   } else {
     return false;

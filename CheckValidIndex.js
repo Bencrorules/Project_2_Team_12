@@ -119,15 +119,19 @@ const validIndexForSecond = (i,j,direction,numOfShips) => {
             }
             else
             {
-                let inner = document.getElementsByClassName('log-wrapper')[0] 
-                inner.innerHTML = "It would overlap with another ship, Try again"
+                if(opponent == 1) {
+                    let inner = document.getElementsByClassName('log-wrapper')[0] 
+                    inner.innerHTML = "It would overlap with another ship, Try again"
+                }
             }
         }
         else
         {
             //updates the description box.
-            let inner = document.getElementsByClassName('log-wrapper')[0] 
-            if(opponent == 1) inner.innerHTML = "Out of bounds"
+            if(opponent == 1) {
+                let inner = document.getElementsByClassName('log-wrapper')[0] 
+                inner.innerHTML = "Out of bounds"
+            }
         }
     }
     //if direction is horizontal
@@ -158,15 +162,19 @@ const validIndexForSecond = (i,j,direction,numOfShips) => {
             else
             {
                 //updates the description box.
-                let inner = document.getElementsByClassName('log-wrapper')[0] 
-                inner.innerHTML = "It would overlap with another ship, Try again"
+                if(opponent == 1) {
+                    let inner = document.getElementsByClassName('log-wrapper')[0] 
+                    inner.innerHTML = "It would overlap with another ship, Try again"
+                }
             }
         }
         else
         {
             //updates the description box.
-            let inner = document.getElementsByClassName('log-wrapper')[0] 
-            if(opponent == 1) inner.innerHTML = "Out of bounds"
+            if(opponent == 1) {
+                let inner = document.getElementsByClassName('log-wrapper')[0] 
+                inner.innerHTML = "Out of bounds"
+            }
         }
     }
 }
