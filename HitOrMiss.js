@@ -137,6 +137,7 @@ const checkIfHitInFirst = (fakebox) => {
           //alert if its a win
           alert("Player 2 WINS!!");
         }, 200);
+        document.querySelector('#restarter').innerHTML = 'New Game';
       }
 
       //update team switch variable.
@@ -198,6 +199,7 @@ const checkIfHitInSecond = (fakebox) => {
         setTimeout(() => {
           alert("Player 1 WINS!!");
         }, 200);
+        document.querySelector('#restarter').innerHTML = 'New Game';
       }
 
       turnSwitch++;
