@@ -117,6 +117,7 @@ const checkIfHitInFirst = (fakebox) => {
         //else its a miss.
         aiSearching = true;
         HitArrayForFirst[i][j] = false;
+        missSound();
         //add the class of miss to the box.
         fakebox.classList.add(".miss-box");
         fakebox.innerHTML = "❌";
@@ -184,6 +185,7 @@ const checkIfHitInSecond = (fakebox) => {
 
       } else {
         HitArrayForSecond[i][j] = false;
+        missSound();
         //add the class of miss to the box.
         fakebox.classList.add(".miss-box");
         fakebox.innerHTML = "❌";
