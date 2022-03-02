@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,89 +11,87 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
-        rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
     />
 
     <style>
-        #overlay {
-            width: 100%;
-            height: 100vh;
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            display: flex;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            font-size: 36px;
-            font-family: Arial, Helvetica, sans-serif;
-            color: floralwhite;
-            background-color: darkslategray;
-            }
-        .hidden {
-            visibility: hidden;
-        }
+      #overlay {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        font-size: 36px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: floralwhite;
+        background-color: darkslategray;
+      }
+      .hidden {
+        visibility: hidden;
+      }
     </style>
-</head>
+  </head>
 
-
-
-<body>
+  <body>
     <h1>
-        <span class="leftText">Player 1</span>
-        <span class="centerText">Battleship</span>
-        <span class="rightText">Player 2</span>
+      <span class="leftText">Player 1</span>
+      <span class="centerText">Battleship</span>
+      <span class="rightText">Player 2</span>
     </h1>
-    <hr>
+    <hr />
     <div class="center-container">
-        <div id="boards">
+      <div id="boards">
         <div id="firstGameBoard" class="gameBoard"></div>
         <div id="backOfFirst" class="gameBoard hidden"></div>
         <div class="prompt-container">
-            <div class="radio-wrapper">
+          <div class="radio-wrapper">
             <p>Change your ship direction:</p>
             <label for="horizontal"
-                >Right
+              >Right
 
-                <input
+              <input
                 type="radio"
                 name="orientation"
                 value="horizontal"
                 id="horizontal"
-                onclick = getOrientation(this.value);
+                onclick="getOrientation(this.value);"
                 checked
-                />
+              />
             </label>
             <label for="vertical"
-                >Down
+              >Down
 
-                <input
+              <input
                 type="radio"
                 name="orientation"
                 value="vertical"
                 id="vertical"
-                onclick = getOrientation(this.value);
-                />
+                onclick="getOrientation(this.value);"
+              />
             </label>
-            </div>
-            <div class="log-container">
+          </div>
+          <div class="log-container">
             <div class="log-wrapper"></div>
-            </div>
+          </div>
         </div>
         <div id="secondGameBoard" class="gameBoard"></div>
         <div id="backOfSecond" class="gameBoard hidden"></div>
-        </div>
+      </div>
     </div>
     <div class="center-container">
-        <div id="switchTeam" class="hidden">
+      <div id="switchTeam" class="hidden">
         <button id="switch">Switch Team</button>
-        </div>
-        <div id="prompter" class="hidden">
+      </div>
+      <div id="prompter" class="hidden">
         <button id="clicker">Start Game</button>
-        </div>
+      </div>
     </div>
-    <script src ="toggleOverlay.js"></script>
+    <script src="toggleOverlay.js"></script>
     <script src="Arrays.js"></script>
     <script src="CheckValidIndex.js"></script>
     <script src="placingShips.js"></script>
@@ -104,10 +102,9 @@
     <script src="Executive.js"></script>
     <script src="artificialIntelligence.js"></script>
     <script src="sounds.js"></script>
-</body>
+  </body>
 
-<div id = "overlay">
+  <div id="overlay">
     <p>Press 'g' when ready.</p>
-</div>
-
+  </div>
 </html>
