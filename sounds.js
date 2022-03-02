@@ -3,3 +3,9 @@ const hitSound = () => {
     hit.loop = false;
     hit.play();
 }
+
+const missSound = () => {
+    let miss = new Audio('water_splash.mp3');
+    miss.loop = false;
+    miss.play();
+}
