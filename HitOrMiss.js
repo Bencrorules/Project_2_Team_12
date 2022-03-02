@@ -137,11 +137,6 @@ const checkIfHitInFirst = (fakebox) => {
           //alert if its a win
           alert("Player 2 WINS!!");
         }, 200);
-
-        //then reload the page
-        setTimeout(() => {
-          location.reload();
-        }, 200);
       }
 
       //update team switch variable.
@@ -202,10 +197,6 @@ const checkIfHitInSecond = (fakebox) => {
       if (checkIfWinInSecond() == true) {
         setTimeout(() => {
           alert("Player 1 WINS!!");
-        }, 200);
-
-        setTimeout(() => {
-          location.reload();
         }, 200);
       }
 

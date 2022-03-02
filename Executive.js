@@ -50,6 +50,7 @@ const startGame = () => {
   //After start game is clicked,the first board is now visible cause we remove the class called "hidden" i.e PlayerOne can see his board
   gameBoardContainer1.classList.remove("invisible");
   gameBoardContainer2.classList.add("hidden");
+  
 
   //We now render the back of second board to hide the second board i.e Player One can't see opponents board
   renderBackOfSecondBoard();
@@ -57,10 +58,21 @@ const startGame = () => {
   //we don't need the "Start Game" div anymore because we already now started the game so let's hide it.
   startGameDiv.classList.add("hidden");
 
+  restartGameDiv.classList.remove("option");
+
   let inner = document.getElementsByClassName('log-wrapper')[0] 
   inner.innerHTML = "Player 1's turn, FIRE !!!"
 
   //now we should instead make the "Switch Team" visible by removing the "hidden class from it"
+}
+
+const restartGame = () => {
+  let isRestart = confirm("Would you like to restart the game?");
+  console.log(isRestart);
+  if (isRestart)
+  {
+    location.reload();
+  }
 }
 
 //This is what starts the game by prompting the user.
@@ -103,11 +115,18 @@ and they click on "Start game" */
 
 // Grabbing The Start Game Box That pops up after both players place ships
 let startGameDiv = document.querySelector("#prompter");
+
+let restartGameDiv = document.querySelector("#restart-prompter");
 // Grabbing the button inside that box
 let startGameButton = document.getElementById("clicker");
+
+let restartGameButton = document.getElementById("restarter");
 
 //After the user clicks on the "Start Game" button it fires a function called startGame();
 startGameButton.addEventListener("click", () => {
   startGame();
+}),
+restartGameButton.addEventListener("click", () => {
+  restartGame();
 });
 
