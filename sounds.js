@@ -9,3 +9,9 @@ const missSound = () => {
     miss.loop = false;
     miss.play();
 }
+
+const doubleClick = () => {
+  let dc = new Audio("alert.wav");
+  dc.loop = false;
+  dc.play();
+}
