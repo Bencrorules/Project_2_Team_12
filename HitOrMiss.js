@@ -20,7 +20,10 @@ const checkIfHitInFirst = (fakebox) => {
       //so we need to say the user to place in another index.
       //also update the description box with that message.
       let inner = document.getElementsByClassName('log-wrapper')[0]
-      if(opponent == 1) inner.innerHTML = "Already clicked that space. Try again !"
+      if(opponent == 1){ 
+        inner.innerHTML = "Already clicked that space. Try again !"
+        doubleClick();
+      }
       else if(HitArrayForFirst[i][j] == true) {
         var elementRepeat = document.getElementsByClassName(`${i+1},${j+1}`)[0]
         let elementNameRepeat = elementRepeat.className;
@@ -164,6 +167,7 @@ const checkIfHitInSecond = (fakebox) => {
       //also update the description box with that message.
       let inner = document.getElementsByClassName('log-wrapper')[0]
       inner.innerHTML = "Already clicked that space. Try again !"
+      doubleClick();
     }
     else
     {
