@@ -4,12 +4,21 @@ const getOrientation = (orientation) => {
     direction = radios;
 }
 
-//updates the text of which ship the user needs to place next
+//updates the text of which ship the user needs to place next. Removes direction prompt once 1x1 ship is being placed and for rest of game
 const updateShipText = () => {
   let inner = document.getElementsByClassName('log-wrapper')[0] 
   if(numOfShips>0)
   {
     inner.innerHTML = `Player ${playerNow}, Please place your 1x${numOfShips} ship`
+    if (numOfShips == 1)
+    {
+      let horizontalLabel = document.getElementById("horizontalLabel");
+      horizontalLabel.remove();
+      let verticalLabel = document.getElementById("verticalLabel");
+      verticalLabel.remove();
+      let directionPrompt = document.getElementById("directionPrompt");
+      directionPrompt.remove();
+    }
   }     
 }
 
