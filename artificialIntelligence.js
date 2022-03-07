@@ -4,6 +4,7 @@ let randomDirection = 0;
 let randomI = 0;
 let randomJ = 0;
 
+//places ships at random for the AI
 const placeRandomizedShips = () => {
     //initializes randomized variables
     let randomDirectionString = "horizontal";
@@ -25,24 +26,27 @@ const placeRandomizedShips = () => {
     }
 }
 
+//completes the AI's turn based on the difficulty selected
 const artificialTurn = () => {
     if(difficulty == 1) artificialTurnEasy();
     else if(difficulty == 2) artificialTurnMedium();
     else if(difficulty == 3) artificialTurnHard();
 }
 
+//completes a turn for the Easy AI
 const artificialTurnEasy = () => {
-    randomI = Math.floor(Math.random() * 10) + 1;
-    randomJ = Math.floor(Math.random() * 10) + 1;
+    randomI = Math.floor(Math.random() * 10) + 1; //chooses random X coordinate
+    randomJ = Math.floor(Math.random() * 10) + 1; //chooses random Y coordinate
     let chosenSquare = document.getElementsByClassName(`${randomI},${randomJ}e`)[0]
     checkIfHitInFirst(chosenSquare);
 }
 
+//completes a turn for the Medium AI
 const artificialTurnMedium = () => {
-    if (hits == 0) {
+    if (hits == 0) { //if ship hasn't been hit yet, hit random spot
         artificialTurnEasy();
     }
-    else if (hits > 0) {
+    else if (hits > 0) { //if a ship has been hit, hit adjacent spots until ship is sunk
         if(hits == 1) {
             randomDirection = Math.floor(Math.random() * 4);
             aiSearching = false;
@@ -67,25 +71,26 @@ const artificialTurnMedium = () => {
             else {
                 aiSearching = true
                 artificialTurnMedium();
-            } 
+            }
         }
         else if(randomDirection == 2 && aiSearching == false) {
             if((randomJ + hits) <= 10 && (randomJ + hits) >= 1) checkIfHitInFirst(document.getElementsByClassName(`${randomI},${randomJ + hits}e`)[0])
             else {
                 aiSearching = true
                 artificialTurnMedium();
-            } 
+            }
         }
         else if(randomDirection == 3 && aiSearching == false) {
             if((randomJ - hits) <= 10 && (randomJ - hits) >= 1) checkIfHitInFirst(document.getElementsByClassName(`${randomI},${randomJ - hits}e`)[0])
             else {
                 aiSearching = true
                 artificialTurnMedium();
-            } 
+            }
         }
     }
 }
 
+//completes turn for Hard AI
 const artificialTurnHard = () => {
     let count = 0;
     for (let i = 0; i < 10; i++) {
