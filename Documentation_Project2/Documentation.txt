@@ -2,29 +2,42 @@ Team 12 Project 2 Documentation
 
 Person-Hour Estimate:
 
-	7.67 hours.
-	
+	We estimate that each person a contributed roughly 6.26 hours of time towards this project.
+	On average, each person contributed about 4 hours towards coding and about half an hour
+	each on documentation, commenting code, and communication with other teammates. A complete
+	breakdown of time management is shown below in the person-hour log.
+
 Person-Hour Log:
 
 	General communication among team members (number of messages * 30 seconds): 25 minutes
-		GTA meeting: Hasn't happened yet
-		Code documentation: 1 hour
-		Code comments: 90 minutes
-		Coding: 4 hours and 45 minutes
+	Code documentation: 30 minutes
+	Code comments: 36 minutes
+	Coding: 4 hours and 45 minutes
 
-		Total: 7.67 hours
+	Total: 6.26 hours
 
 Documentation of Changes:
-	To continue the progess that Group 7 made, we programmed the additions to their Battleship game in JavaScript. The features that we added include incorporating an AI opponent with easy, medium, and hard modes, sound effects for the various actions, the option to restart the game, and removal of the direction prompt when starting the game.
+	To continue the progess that Group 7 made, we programmed the additions to their Battleship game in JavaScript.
+	The features that we added include incorporating an AI opponent with easy, medium, and hard modes, sound effects
+	for the various actions, the option to restart the game, and removal of the direction prompt when starting the game.
 
 	The AI opponent has 3 modes:
 		Easy: The AI randomly fires at the board in each turn
-		Medium: The AI randomly fires at the board, but when a spot is hit, it aims at adjacently located spots until a ship is sunk. Then, the AI shoots randomly again.
+		Medium: The AI randomly fires at the board, but when a spot is hit, it aims at adjacently located spots until a
+		ship is sunk. Then, the AI shoots randomly again.
 		Hard: The AI fires at every spot where there's a ship.
-	The user has the option to play against a human opponent or the AI. If the AI is chosen, they choose what difficulty they will play against, and then end up playing against it.
+	The user has the option to play against a human opponent or the AI. If the AI is chosen, they choose what difficulty
+	they will play against, and then end up playing against it.
 
-	Sound effects were added to the game using the imported files 'alert.wav', 'sea_explosion.wav', and 'water_splash.mp3'. 'water_splash.mp3' produces a "splash" sound, and is played when someone missed a shot on the Battlefield board. 'sea_explosion.wav' produces a sound similar to hitting metal, and is played when someone hits a ship on the Battlefield board. Lastly, 'alert.wav' produces a high-pitched ring sound, and is played when someone tries to attack a spot that was previously attacked.
+	Sound effects were added to the game using the imported files 'alert.wav', 'sea_explosion.wav', and 'water_splash.mp3'.
+	'water_splash.mp3' produces a "splash" sound, and is played when someone missed a shot on the Battlefield board.
+	'sea_explosion.wav' produces a sound similar to hitting metal, and is played when someone hits a ship on the Battlefield board.
+	Lastly, 'alert.wav' produces a high-pitched ring sound, and is played when someone tries to attack a spot that was previously attacked.
 
-	We added the ability to restart the game during the game, and after the game was completed. This button was added at the bottom in between the two boards. When this button is clicked, the user is prompted with "Are you sure you want to restart?" in case they accidentally clicked it. If they choose yes, they are redirected to the beginning of the process, which is the prompt on if they want to play against a human or AI.
+	We added the ability to restart the game during the game, and after the game was completed. This button was added at the bottom in between
+	the two boards. When this button is clicked, the user is prompted with "Are you sure you want to restart?" in case they accidentally clicked
+	it. If they choose yes, they are redirected to the beginning of the process, which is the prompt on if they want to play against a human or AI.
 
-	In Project 1, Group 7 had it so that the input choices of the direction of the ships when they were being placed was staying the whole game. We changed this so that it would be removed once it was not needed, which is when the user is placing a 1x1 ship. A 1x1 ship shouldn't have direction, so it isn't needed.
+	In Project 1, Group 7 had it so that the input choices of the direction of the ships when they were being placed was staying
+	the whole game. We changed this so that it would be removed once it was not needed, which is when the user is placing a 1x1 ship.
+	A 1x1 ship shouldn't have direction, so it isn't needed.
