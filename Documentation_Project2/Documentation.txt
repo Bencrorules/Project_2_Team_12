@@ -16,7 +16,7 @@ Person-Hour Log:
 
 	Total: 6.26 hours
 
-Documentation of Changes:
+Custom Additions to Project 1:
 	To continue the progess that Group 7 made, we programmed the additions to their Battleship game in JavaScript.
 	The features that we added include incorporating an AI opponent with easy, medium, and hard modes, sound effects
 	for the various actions, the option to restart the game, and removal of the direction prompt when starting the game.
